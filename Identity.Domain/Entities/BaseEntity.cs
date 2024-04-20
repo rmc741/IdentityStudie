@@ -1,7 +1,9 @@
 ﻿namespace Identity.Domain.Entities
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         public int Id { get; protected set; }
+
+        public DateTime CreatedDate { get; protected set; } = DateTime.Now;
     }
 }
