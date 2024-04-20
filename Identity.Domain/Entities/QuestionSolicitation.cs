@@ -1,20 +1,41 @@
-﻿namespace Identity.Domain.Entities
+﻿using Identity.Domain.Validation;
+
+namespace Identity.Domain.Entities
 {
     public class QuestionSolicitation : BaseEntity
     {
-        public int QuestionQnt { get; set; }
+        public string Description { get; set; }
+        public int TotalQuestionsRequest { get;  set; }
+        public int CategoryId { get;  set; }
+        public Category Category { get; set; }
+        public ICollection<Question>? QuestionList { get; set; }
 
-        public int CategoryId { get; set; }
+        public QuestionSolicitation(string description, int totalQuestions, int categoryId)
+        {
+            DomainExceptionValidation.When(string.IsNullOrEmpty(description), "Invalid description. Description is required.");
+            DomainExceptionValidation.When(totalQuestions <= 0, "Invalid Total Questions Request value.");
+            DomainExceptionValidation.When(categoryId <= 0, "Invalid Category Id value.");
+            Description = description;
+            TotalQuestionsRequest = totalQuestions;
+            CategoryId = categoryId;
+        }
+
+        public QuestionSolicitation(int id, string description, int totalQuestions, int categoryId)
+        {
+            DomainExceptionValidation.When(id < 0, "Invalid id value.");
+            Id = id;
+
+            DomainExceptionValidation.When(string.IsNullOrEmpty(description), "Invalid description. Description is required.");
+            DomainExceptionValidation.When(totalQuestions <= 0, "Invalid Total Questions Request value.");
+            DomainExceptionValidation.When(categoryId <= 0, "Invalid Category Id value.");
+            Description = description;
+            TotalQuestionsRequest = totalQuestions;
+            CategoryId = categoryId;
+        }
 
         /*
-        //public int Id { get; set; }
-        //public int TotalQuestionsRequest { get; set; }
-        //public int CategoryId { get; set; }
-        //public Category Categories { get; set; }
-        //public string Description { get; set; }
         //public string UserId { get; set; }
         //public ApplicationUser User { get; set; }
-        //public virtual ICollection<Question>? Questions { get; set; }
         //public int? TotalQuestions { get => Questions?.Count; }*/
 
         /*
