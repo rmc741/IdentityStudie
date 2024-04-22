@@ -1,3 +1,4 @@
+using IdentityStudie.IoC;
 
 namespace IdentityStudie
 {
@@ -8,6 +9,7 @@ namespace IdentityStudie
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddInfrastructureAPI(builder.Configuration);
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
