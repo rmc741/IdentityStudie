@@ -48,7 +48,7 @@ namespace IdentityStudie.Application.Services
             await _mediator.Send(solicitationsCreateCommand);
         }
 
-        public Task Update(QuestionSolicitationDTO questionSolicictationDto)
+        public async Task Update(QuestionSolicitationDTO questionSolicictationDto)
         {
             var solicitationsUpdateCommand = _mapper.Map<SolicitationUpdateCommand>(questionSolicictationDto);
             await _mediator.Send(solicitationsUpdateCommand);
