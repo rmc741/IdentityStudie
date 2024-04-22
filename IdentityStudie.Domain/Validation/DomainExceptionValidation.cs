@@ -1,4 +1,4 @@
-﻿namespace Identity.Domain.Validation
+﻿namespace IdentityStudie.Domain.Validation
 {
     public class DomainExceptionValidation : Exception
     {

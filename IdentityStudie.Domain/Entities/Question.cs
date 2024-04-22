@@ -1,4 +1,4 @@
-﻿namespace Identity.Domain.Entities
+﻿namespace IdentityStudie.Domain.Entities
 {
     public class Question : BaseEntity
     {
