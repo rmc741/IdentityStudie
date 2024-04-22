@@ -10,7 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Identity.Domain\Identity.Domain.csproj" />
+    <ProjectReference Include="..\IdentityStudie.Application\IdentityStudie.Application.csproj" />
+    <ProjectReference Include="..\IdentityStudie.Domain\IdentityStudie.Domain.csproj" />
+    <ProjectReference Include="..\IdentityStudie.Infra\IdentityStudie.Infra.csproj" />
   </ItemGroup>
 
 </Project>

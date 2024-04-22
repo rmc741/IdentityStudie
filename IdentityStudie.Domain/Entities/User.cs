@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Identity.Domain.Entities
+namespace IdentityStudie.Domain.Entities
 {
     public class User : IdentityUser
     {
