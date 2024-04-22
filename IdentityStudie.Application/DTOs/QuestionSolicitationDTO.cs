@@ -1,4 +1,4 @@
-﻿using Identity.Domain.Entities;
+﻿using IdentityStudie.Domain.Entities;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;

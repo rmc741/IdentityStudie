@@ -1,6 +1,8 @@
-﻿namespace IdentityStudie.Application.QuestionSolicitation.Queries
+﻿using MediatR;
+
+namespace IdentityStudie.Application.QuestionSolicitation.Queries
 {
-    public class GetSolicitationsQuery
+    public class GetSolicitationsQuery : IRequest<IEnumerable<Domain.Entities.QuestionSolicitation>>
     {
     }
 }

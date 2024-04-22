@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Identity.Domain.Entities;
 using IdentityStudie.Application.DTOs;
 
 namespace IdentityStudie.Application.Mappings
@@ -8,7 +7,7 @@ namespace IdentityStudie.Application.Mappings
     {
         public DomainToDtoMappingProfile()
         {
-            CreateMap<QuestionSolicitation, QuestionSolicitationDTO>.ReverseMap();
+            CreateMap<Domain.Entities.QuestionSolicitation, QuestionSolicitationDTO>().ReverseMap();
         }
     }
 }

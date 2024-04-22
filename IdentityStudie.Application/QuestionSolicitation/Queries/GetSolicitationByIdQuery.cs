@@ -2,7 +2,7 @@
 
 namespace IdentityStudie.Application.QuestionSolicitation.Queries
 {
-    public class GetSolicitationByIdQuery : IRequest<QuestionSolicitation>
+    public class GetSolicitationByIdQuery : IRequest<Domain.Entities.QuestionSolicitation>
     {
         public int Id { get; set; }
         public GetSolicitationByIdQuery(int id)

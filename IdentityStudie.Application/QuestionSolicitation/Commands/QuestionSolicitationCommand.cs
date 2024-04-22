@@ -1,9 +1,8 @@
-﻿using Identity.Domain.Entities;
-using MediatR;
+﻿using MediatR;
 
 namespace IdentityStudie.Application.QuestionSolicitation.Commands
 {
-    public abstract class QuestionSolicitationCommand : IRequest<QuestionSolicitation>
+    public abstract class QuestionSolicitationCommand : IRequest<Domain.Entities.QuestionSolicitation>
     {
         public string Description { get; set; }
         public int TotalQuestionsRequest { get; set; }
