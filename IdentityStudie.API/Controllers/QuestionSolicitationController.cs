@@ -18,7 +18,7 @@ namespace IdentityStudie.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<QuestionSolicitationDTO>>> Get()
         {
-            var questionSolicitationList = await _questionSolicitationService.GetProducts();
+            var questionSolicitationList = await _questionSolicitationService.GetSolicitations();
             if (questionSolicitationList == null)
             {
                 return BadRequest("Solicitations not found");
