@@ -18,6 +18,7 @@ namespace IdentityStudie.Application.DTOs
         [DisplayName("TotalQuestionsRequest")]
         public int TotalQuestionsRequest { get; set; }
 
+        [Required(ErrorMessage = "The Category Id is Required")]
         [DisplayName("Category")]
         public int CategoryId { get; set; }
 
