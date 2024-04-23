@@ -1,18 +1,21 @@
 ﻿using IdentityStudie.Application.QuestionSolicitation.Queries;
+using IdentityStudie.Domain.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IdentityStudie.Application.QuestionSolicitation.Handlers
 {
     public class GetSolicitationByIdQueryHandler : IRequestHandler<GetSolicitationByIdQuery, Domain.Entities.QuestionSolicitation>
     {
-        public Task<Domain.Entities.QuestionSolicitation> Handle(GetSolicitationByIdQuery request, CancellationToken cancellationToken)
+        private readonly ISolicitationsRepository _solicitationRepository;
+
+        public GetSolicitationByIdQueryHandler(ISolicitationsRepository solicitationRepository)
         {
-            throw new NotImplementedException();
+            _solicitationRepository = solicitationRepository;
+        }
+
+        public async Task<Domain.Entities.QuestionSolicitation> Handle(GetSolicitationByIdQuery request, CancellationToken cancellationToken)
+        {
+            return await _solicitationRepository.GetByIdAsync(request.Id);
         }
     }
 }
