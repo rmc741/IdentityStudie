@@ -2,7 +2,7 @@
 
 namespace IdentityStudie.Domain.Interfaces
 {
-    public interface ISolicitationsRepository
+    public interface ISolicitationRepository
     {
         Task<IEnumerable<QuestionSolicitation>> GetSolicitationsAsync();
         Task<QuestionSolicitation> GetByIdAsync(int id);

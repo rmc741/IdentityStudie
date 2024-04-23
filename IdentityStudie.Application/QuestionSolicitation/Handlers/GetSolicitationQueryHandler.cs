@@ -6,9 +6,9 @@ namespace IdentityStudie.Application.QuestionSolicitation.Handlers
 {
     public class GetSolicitationQueryHandler : IRequestHandler<GetSolicitationsQuery, IEnumerable<Domain.Entities.QuestionSolicitation>>
     {
-        private readonly ISolicitationsRepository _solicitationRepository;
+        private readonly ISolicitationRepository _solicitationRepository;
 
-        public GetSolicitationQueryHandler(ISolicitationsRepository solicitationRepository)
+        public GetSolicitationQueryHandler(ISolicitationRepository solicitationRepository)
         {
             _solicitationRepository = solicitationRepository;
         }

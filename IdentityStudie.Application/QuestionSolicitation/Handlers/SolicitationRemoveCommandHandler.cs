@@ -11,9 +11,9 @@ namespace IdentityStudie.Application.QuestionSolicitation.Handlers;
 
 public class SolicitationRemoveCommandHandler : IRequestHandler<SolicitationRemoveCommand, Domain.Entities.QuestionSolicitation>
 {
-    private readonly ISolicitationsRepository _solicitationRepository;
+    private readonly ISolicitationRepository _solicitationRepository;
 
-    public SolicitationRemoveCommandHandler(ISolicitationsRepository solicitationRepository)
+    public SolicitationRemoveCommandHandler(ISolicitationRepository solicitationRepository)
     {
         _solicitationRepository = solicitationRepository;
     }

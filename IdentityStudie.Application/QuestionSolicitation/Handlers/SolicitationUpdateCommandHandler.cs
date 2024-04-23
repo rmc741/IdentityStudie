@@ -7,9 +7,9 @@ namespace IdentityStudie.Application.QuestionSolicitation.Handlers
 {
     public class SolicitationUpdateCommandHandler : IRequestHandler<SolicitationUpdateCommand, Domain.Entities.QuestionSolicitation>
     {
-        private readonly ISolicitationsRepository _solicitationRepository;
+        private readonly ISolicitationRepository _solicitationRepository;
 
-        public SolicitationUpdateCommandHandler(ISolicitationsRepository solicitationRepository)
+        public SolicitationUpdateCommandHandler(ISolicitationRepository solicitationRepository)
         {
             _solicitationRepository = solicitationRepository;
         }
