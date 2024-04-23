@@ -17,7 +17,7 @@ namespace IdentityStudie.IoC
              options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"
             ), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
-            services.AddScoped<IQuestionSolicitationService, QuestionSolicitationService>();
+            services.AddScoped<ISolicitationService, QuestionSolicitationService>();
 
             services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
 

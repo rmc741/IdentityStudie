@@ -1,20 +1,21 @@
 ﻿using IdentityStudie.Application.QuestionSolicitation.Queries;
-using IdentityStudie.Domain.Entities;
+using IdentityStudie.Domain.Interfaces;
 using MediatR;
 
 namespace IdentityStudie.Application.QuestionSolicitation.Handlers
 {
     public class GetSolicitationQueryHandler : IRequestHandler<GetSolicitationsQuery, IEnumerable<Domain.Entities.QuestionSolicitation>>
     {
-        //private readonly ISolicitationRepository _solicitationRepository;
+        private readonly ISolicitationsRepository _solicitationRepository;
 
-        public GetSolicitationQueryHandler()
+        public GetSolicitationQueryHandler(ISolicitationsRepository solicitationRepository)
         {
+            _solicitationRepository = solicitationRepository;
         }
 
-        public Task<IEnumerable<Domain.Entities.QuestionSolicitation>> Handle(GetSolicitationsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Domain.Entities.QuestionSolicitation>> Handle(GetSolicitationsQuery request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await _solicitationRepository.GetSolicitationsAsync();
         }
     }
 }

@@ -7,7 +7,7 @@ using MediatR;
 
 namespace IdentityStudie.Application.Services
 {
-    public class QuestionSolicitationService : IQuestionSolicitationService
+    public class QuestionSolicitationService : ISolicitationService
     {
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
