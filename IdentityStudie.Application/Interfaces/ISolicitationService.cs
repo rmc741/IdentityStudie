@@ -2,7 +2,7 @@
 
 namespace IdentityStudie.Application.Interfaces
 {
-    public interface IQuestionSolicitationService
+    public interface ISolicitationService
     {
         Task<IEnumerable<QuestionSolicitationDTO>> GetSolicitations();
         Task Add(QuestionSolicitationDTO questionSolicictationDto);

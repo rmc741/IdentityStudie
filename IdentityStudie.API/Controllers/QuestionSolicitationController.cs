@@ -8,9 +8,9 @@ namespace IdentityStudie.API.Controllers
     [ApiController]
     public class QuestionSolicitationController : ControllerBase
     {
-        private readonly IQuestionSolicitationService _questionSolicitationService;
+        private readonly ISolicitationService _questionSolicitationService;
 
-        public QuestionSolicitationController(IQuestionSolicitationService questionSolicitationService)
+        public QuestionSolicitationController(ISolicitationService questionSolicitationService)
         {
             _questionSolicitationService = questionSolicitationService;
         }
