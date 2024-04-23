@@ -1,7 +1,7 @@
 ﻿using IdentityStudie.Domain.Entities;
 using IdentityStudie.Domain.Interfaces;
 using IdentityStudie.Infra.Data.Context;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdentityStudie.Infra.Data.Repository
 {
