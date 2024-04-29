@@ -1,4 +1,5 @@
 ﻿using IdentityStudie.Domain.Entities;
+using IdentityStudie.Domain.Enums;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -7,7 +8,7 @@ namespace IdentityStudie.Application.DTOs
 {
     public class QuestionSolicitationDTO
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Required(ErrorMessage = "The Description is Required")]
         [DisplayName("The Description is Required")]
@@ -22,6 +23,7 @@ namespace IdentityStudie.Application.DTOs
         [DisplayName("Category")]
         public int CategoryId { get; set; }
 
+        //Tirar o json ignora quando ja estiver com o retorno de category e questions ok
         [JsonIgnore]
         public Category? Category { get; set; }
 

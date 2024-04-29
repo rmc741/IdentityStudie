@@ -10,6 +10,11 @@ public sealed class QuestionSolicitation : BaseEntity
     public Category Category { get; set; }
     public ICollection<Question>? QuestionList { get; set; }
 
+    public QuestionSolicitation()
+    {
+        
+    }
+
     public QuestionSolicitation(string description, int totalQuestions, int categoryId)
     {
         ValidateDomain(description, totalQuestions, categoryId);

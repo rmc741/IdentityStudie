@@ -1,18 +1,30 @@
 ﻿using IdentityStudie.Application.QuestionSolicitation.Commands;
+using IdentityStudie.Domain.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace IdentityStudie.Application.QuestionSolicitation.Handlers
+namespace IdentityStudie.Application.QuestionSolicitation.Handlers;
+
+public class SolicitationCreateCommandHandler : IRequestHandler<SolicitationCreateCommand, Domain.Entities.QuestionSolicitation>
 {
-    public class SolicitationCreateCommandHandler : IRequestHandler<SolicitationCreateCommand, Domain.Entities.QuestionSolicitation>
+    private readonly ISolicitationRepository _solicitationRepository;
+
+    public SolicitationCreateCommandHandler(ISolicitationRepository solicitationRepository)
     {
-        public Task<Domain.Entities.QuestionSolicitation> Handle(SolicitationCreateCommand request, CancellationToken cancellationToken)
+        _solicitationRepository = solicitationRepository;
+    }
+
+    public async Task<Domain.Entities.QuestionSolicitation> Handle(SolicitationCreateCommand request, CancellationToken cancellationToken)
+    {
+        var solicitation = new Domain.Entities.QuestionSolicitation(request.Description,
+            request.TotalQuestionsRequest, request.CategoryId);
+
+        if (solicitation == null)
         {
-            throw new NotImplementedException();
+            throw new ApplicationException($"Error creating entity");
+        }
+        else
+        {
+            return await _solicitationRepository.CreateAsync(solicitation);
         }
     }
 }

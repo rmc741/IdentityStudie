@@ -1,7 +1,9 @@
 ﻿using IdentityStudie.Application.Interfaces;
 using IdentityStudie.Application.Mappings;
 using IdentityStudie.Application.Services;
+using IdentityStudie.Domain.Interfaces;
 using IdentityStudie.Infra.Data.Context;
+using IdentityStudie.Infra.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,7 @@ namespace IdentityStudie.IoC
              options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"
             ), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
+            services.AddScoped<ISolicitationRepository, SolicitationRepository>();
             services.AddScoped<ISolicitationService, QuestionSolicitationService>();
 
             services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
