@@ -48,8 +48,7 @@ namespace IdentityStudie.API.Controllers
 
             await _questionSolicitationService.Add(solicictationDTO);
 
-            return new CreatedAtRouteResult("GetSolicitation",
-                                             new { id = solicictationDTO.Id }, solicictationDTO);
+            return Ok();
         }
 
         [HttpPut("{id}")]
