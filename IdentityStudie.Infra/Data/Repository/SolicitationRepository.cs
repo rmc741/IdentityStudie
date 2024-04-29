@@ -16,17 +16,9 @@ namespace IdentityStudie.Infra.Data.Repository
 
         public async Task<QuestionSolicitation> CreateAsync(QuestionSolicitation solicitation)
         {
-            try
-            {
-                _dbContext.Add(solicitation);
-                await _dbContext.SaveChangesAsync();
-                return solicitation;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            
+            _dbContext.Add(solicitation);
+            await _dbContext.SaveChangesAsync();
+            return solicitation;
         }
 
         public async Task<QuestionSolicitation> GetByIdAsync(int id)
