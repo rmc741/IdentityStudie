@@ -18,33 +18,35 @@ public sealed class QuestionSolicitation : BaseEntity
         
     }
 
-    public QuestionSolicitation(string description, int totalQuestions, int categoryId, StatusEnum status)
+    public QuestionSolicitation(string description, int totalQuestions, int categoryId, int professorId, StatusEnum status)
     {
-        ValidateDomain(description, totalQuestions, categoryId, status);
+        ValidateDomain(description, totalQuestions, categoryId, professorId, status);
     }
 
-    public QuestionSolicitation(int id, string description, int totalQuestions, int categoryId, StatusEnum status)
+    public QuestionSolicitation(int id, string description, int totalQuestions, int categoryId, int professorId, StatusEnum status)
     {
         DomainExceptionValidation.When(id < 0, "Invalid id value.");
         Id = id;
 
-        ValidateDomain(description,totalQuestions,categoryId, status);
+        ValidateDomain(description,totalQuestions,categoryId, professorId, status);
     }
 
-    public void Update(string description, int totalQuestions, int categoryId, StatusEnum status)
+    public void Update(string description, int totalQuestions, int categoryId, int professorId, StatusEnum status)
     {
-        ValidateDomain(description, totalQuestions, categoryId, status);
+        ValidateDomain(description, totalQuestions, categoryId, professorId, status);
     }
 
-    private void ValidateDomain(string description, int totalQuestions, int categoryId, StatusEnum status)
+    private void ValidateDomain(string description, int totalQuestions, int categoryId, int professorId, StatusEnum status)
     {
         DomainExceptionValidation.When(string.IsNullOrEmpty(description), "Invalid description. Description is required.");
         DomainExceptionValidation.When(totalQuestions <= 0, "Invalid Total Questions Request value.");
         DomainExceptionValidation.When(categoryId <= 0, "Invalid Category Id value.");
-        DomainExceptionValidation.When(Enum.IsDefined(status), "Invalid Status value.");
+        DomainExceptionValidation.When(professorId <= 0, "Invalid Professor Id value.");
+        DomainExceptionValidation.When(status < 0, "Invalid Status value.");
         Description = description;
         TotalQuestionsRequest = totalQuestions;
         CategoryId = categoryId;
+        ProfessorId = professorId;
         Status = status;
     }
 
