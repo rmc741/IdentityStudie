@@ -15,4 +15,8 @@
     <ProjectReference Include="..\IdentityStudie.Domain\IdentityStudie.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AnswerSolicitation\Commands\" />
+  </ItemGroup>
+
 </Project>
