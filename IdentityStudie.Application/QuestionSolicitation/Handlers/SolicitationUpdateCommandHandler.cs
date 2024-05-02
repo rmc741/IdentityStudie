@@ -24,7 +24,7 @@ namespace IdentityStudie.Application.QuestionSolicitation.Handlers
             }
             else
             {
-                solicitation.Update(request.Description, request.TotalQuestionsRequest, request.CategoryId);
+                solicitation.Update(request.Description, request.TotalQuestionsRequest, request.CategoryId, request.Status);
                 return await _solicitationRepository.UpdateAsync(solicitation);
             }
         }
