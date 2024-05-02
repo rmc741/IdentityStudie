@@ -16,7 +16,7 @@ public class SolicitationCreateCommandHandler : IRequestHandler<SolicitationCrea
     public async Task<Domain.Entities.QuestionSolicitation> Handle(SolicitationCreateCommand request, CancellationToken cancellationToken)
     {
         var solicitation = new Domain.Entities.QuestionSolicitation(request.Description,
-            request.TotalQuestionsRequest, request.CategoryId, request.Status);
+            request.TotalQuestionsRequest, request.CategoryId, request.ProfessorId, request.Status);
 
         if (solicitation == null)
         {
