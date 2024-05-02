@@ -21,6 +21,8 @@ namespace IdentityStudie.IoC
 
             services.AddScoped<ISolicitationRepository, SolicitationRepository>();
             services.AddScoped<ISolicitationService, QuestionSolicitationService>();
+            services.AddScoped<IAnswerSolicitationRepository, AnswerSolicitationRepository>();
+            services.AddScoped<IAnswerSolicitationService, AnswerSolicitationService>();
 
             services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
 
