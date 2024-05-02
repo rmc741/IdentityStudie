@@ -70,9 +70,9 @@ namespace IdentityStudie.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<QuestionSolicitationDTO>> Delete(int id)
         {
-            var produtoDto = await _questionSolicitationService.GetById(id);
+            var solicitationDto = await _questionSolicitationService.GetById(id);
 
-            if (produtoDto == null)
+            if (solicitationDto == null)
             {
                 return NotFound("Product not found");
             }
