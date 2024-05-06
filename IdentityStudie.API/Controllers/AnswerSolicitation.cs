@@ -31,7 +31,9 @@ namespace IdentityStudie.API.Controllers
         /*
          * TO-DO 
          * ENDPOINTS para Update e get solicitações por id
-         * 
+         * Endpoint para responser solicitação
+         * Professor so poderá responder solicitação
+         * Endpoint para professores so terá busca por categoria de acordo com categoria de seu perfil(role)
          */
     }
 }

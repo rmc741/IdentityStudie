@@ -4,6 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityStudie.API.Controllers
 {
+    /*
+     * TO-DO
+     * Somente ADM ou User padrão poderá ver/criar/editar/remover solicitações
+     * Solicitações precisam informar id de categoria e prof daquela categoria especifica
+     */
     [Route("api/[controller]")]
     [ApiController]
     public class QuestionSolicitationController : ControllerBase
