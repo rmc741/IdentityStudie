@@ -28,6 +28,18 @@ namespace IdentityStudie.API.Controllers
             return Ok(solicitationsList);
         }
 
+        [HttpPut("{solicitationId}")]
+        public async Task<ActionResult<QuestionSolicitationDTO>> GetSolicitationById(int solicitationId)
+        {
+            var solicitation = await _answerSolicitationService.GetSolicitationById(solicitationId);
+            if (solicitation == null)
+            {
+                return NotFound("Solicitation not found");
+            }
+
+            return Ok(solicitation);
+        }
+
         /*
          * TO-DO 
          * ENDPOINTS para Update e get solicitações por id
