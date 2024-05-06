@@ -17,6 +17,11 @@ namespace IdentityStudie.Application.Services
             _mediator = mediator;
         }
 
+        public Task<QuestionSolicitationDTO> GetSolicitationById(int solicitationId)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<QuestionSolicitationDTO>> GetSolicitationsByCategoryId(int categoryId)
         {
             var solicitationsByCategoryIdQuery = new GetSolicitationByCategoryIdQuery(categoryId);
