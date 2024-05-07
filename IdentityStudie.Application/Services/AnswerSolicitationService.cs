@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using IdentityStudie.Application.AnswerSolicitation.Commands;
 using IdentityStudie.Application.AnswerSolicitation.Queries;
 using IdentityStudie.Application.DTOs;
 using IdentityStudie.Application.Interfaces;
@@ -54,9 +55,10 @@ namespace IdentityStudie.Application.Services
             return _mapper.Map<IEnumerable<QuestionSolicitationDTO>>(result);
         }
 
-        public Task Update(QuestionSolicitationDTO questionSolicictationDto)
+        public async Task Update(AnswerSolicitationDTO questionSolicictationDto)
         {
-            throw new NotImplementedException();
+            var solicitationUpdate = _mapper.Map<AnswerSolicitationUpdateCommand>(questionSolicictationDto);
+            await _mediator.Send(solicitationUpdate);
         }
     }
 }
