@@ -2,11 +2,6 @@
 using IdentityStudie.Domain.Interfaces;
 using IdentityStudie.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IdentityStudie.Infra.Data.Repository
 {
@@ -17,6 +12,12 @@ namespace IdentityStudie.Infra.Data.Repository
         public AnswerSolicitationRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public async Task<QuestionSolicitation> GetSolicitationById(int id)
+        {
+            return await _dbContext.Solicitations.Include(c => c.Category)
+                .SingleOrDefaultAsync(s => s.Id == id);
         }
 
         public async Task<IEnumerable<QuestionSolicitation>> GetSolicitationsByCategoryIdAsync(int categoryId)
@@ -31,6 +32,13 @@ namespace IdentityStudie.Infra.Data.Repository
             return await _dbContext.Solicitations
                                     .Where(s => s.ProfessorId == professorId)
                                     .ToListAsync();
+        }
+
+        public async Task<QuestionSolicitation> UpdateAsync(QuestionSolicitation solicitation)
+        {
+            _dbContext.Update(solicitation);
+            await _dbContext.SaveChangesAsync();
+            return solicitation;
         }
     }
 }
