@@ -15,11 +15,6 @@ namespace IdentityStudie.Application.AnswerSolicitation.Handlers
 
         public async Task<IEnumerable<Domain.Entities.QuestionSolicitation>> Handle(GetSolicitationByCategoryIdQuery request, CancellationToken cancellationToken)
         {
-            /*
-             * TO-DO
-             * Implementar busca da lista de solicitações por category id
-             */
-
             try
             {
                 return await _answerSolicitationRepository.GetSolicitationsByCategoryIdAsync(request.Id);
