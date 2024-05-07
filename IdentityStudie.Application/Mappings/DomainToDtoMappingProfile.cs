@@ -8,6 +8,7 @@ namespace IdentityStudie.Application.Mappings
         public DomainToDtoMappingProfile()
         {
             CreateMap<Domain.Entities.QuestionSolicitation, QuestionSolicitationDTO>().ReverseMap();
+            CreateMap<Domain.Entities.QuestionSolicitation, AnswerSolicitationDTO>().ReverseMap();
         }
     }
 }
