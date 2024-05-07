@@ -25,5 +25,12 @@ namespace IdentityStudie.Infra.Data.Repository
                                     .Where(s => s.CategoryId == categoryId)
                                     .ToListAsync();
         }
+
+        public async Task<IEnumerable<QuestionSolicitation>> GetSolicitationsByProfessorIdAsync(int professorId)
+        {
+            return await _dbContext.Solicitations
+                                    .Where(s => s.ProfessorId == professorId)
+                                    .ToListAsync();
+        }
     }
 }

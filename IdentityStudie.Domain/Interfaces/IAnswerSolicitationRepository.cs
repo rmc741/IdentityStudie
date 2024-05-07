@@ -6,5 +6,6 @@ namespace IdentityStudie.Domain.Interfaces
     {
         //informar um valor default para categoryId ou receber automaticamente
         Task<IEnumerable<QuestionSolicitation>> GetSolicitationsByCategoryIdAsync(int categoryId);
+        Task<IEnumerable<QuestionSolicitation>> GetSolicitationsByProfessorIdAsync(int professorId);
     }
 }
