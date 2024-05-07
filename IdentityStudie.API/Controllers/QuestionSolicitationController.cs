@@ -32,7 +32,7 @@ namespace IdentityStudie.API.Controllers
             return Ok(questionSolicitationList);
         }
 
-        [HttpGet("{id}", Name = "GetSolicitation")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<QuestionSolicitationDTO>> Get(int id)
         {
             var solicitation = await _questionSolicitationService.GetById(id);
