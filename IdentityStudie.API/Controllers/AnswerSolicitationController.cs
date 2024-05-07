@@ -1,4 +1,5 @@
-﻿using IdentityStudie.Application.DTOs;
+﻿using IdentityStudie.Application.AnswerSolicitation.Commands;
+using IdentityStudie.Application.DTOs;
 using IdentityStudie.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,11 @@ namespace IdentityStudie.API.Controllers
             _answerSolicitationService = answerSolicitations;
         }
 
+        /// <summary>
+        /// Rota para buscar todas Solicitações por Id de Categoria
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         [HttpGet("category/{categoryId}")]
         public async Task<ActionResult<IEnumerable<QuestionSolicitationDTO>>> GetSolicitationsByCategoryId(int categoryId)
         {
@@ -25,6 +31,18 @@ namespace IdentityStudie.API.Controllers
             }
 
             return Ok(solicitationsList);
+        }
+
+        [HttpGet("solicitation/{solicitationId}")]
+        public async Task<ActionResult<QuestionSolicitationDTO>> GetSolicitationById(int solicitationId)
+        {
+            var solicitation = await _answerSolicitationService.GetSolicitationById(solicitationId);
+            if (solicitation == null)
+            {
+                return NotFound("Solicitation not found");
+            }
+
+            return Ok(solicitation);
         }
 
         [HttpGet("professor/{professorId}")]
@@ -40,7 +58,8 @@ namespace IdentityStudie.API.Controllers
         }
 
         [HttpPut("solicitation/{solicitationId}")]
-        public async Task<ActionResult> UpdateSolicitation(int solicitationId, [FromBody] QuestionSolicitationDTO solicitationDto)
+        //Criar um DTO para AnswerSolicitation
+        public async Task<ActionResult<AnswerSolicitationDTO>> UpdateAnswerSolicitation(int solicitationId, [FromBody] AnswerSolicitationDTO solicitationDto)
         {
             if (solicitationId != solicitationDto.Id)
             {
@@ -53,18 +72,6 @@ namespace IdentityStudie.API.Controllers
             await _answerSolicitationService.Update(solicitationDto);
 
             return Ok(solicitationDto);
-        }
-
-        [HttpGet("solicitation/{solicitationId}")]
-        public async Task<ActionResult<QuestionSolicitationDTO>> GetSolicitationById(int solicitationId)
-        {
-            var solicitation = await _answerSolicitationService.GetSolicitationById(solicitationId);
-            if (solicitation == null)
-            {
-                return NotFound("Solicitation not found");
-            }
-
-            return Ok(solicitation);
         }
 
         /*
