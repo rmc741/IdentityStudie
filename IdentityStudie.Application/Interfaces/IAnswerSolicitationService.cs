@@ -6,5 +6,7 @@ namespace IdentityStudie.Application.Interfaces
     {
         Task<IEnumerable<QuestionSolicitationDTO>> GetSolicitationsByCategoryId(int categoryId);
         Task<QuestionSolicitationDTO> GetSolicitationById(int solicitationId);
+        Task<IEnumerable<QuestionSolicitationDTO>> GetSolicitationByProfessorId(int professorId);
+        Task Update(QuestionSolicitationDTO questionSolicictationDto);
     }
 }
