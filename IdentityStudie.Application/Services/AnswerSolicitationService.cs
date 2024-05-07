@@ -2,6 +2,8 @@
 using IdentityStudie.Application.AnswerSolicitation.Queries;
 using IdentityStudie.Application.DTOs;
 using IdentityStudie.Application.Interfaces;
+using IdentityStudie.Application.QuestionSolicitation.Queries;
+using IdentityStudie.Domain.Entities;
 using MediatR;
 
 namespace IdentityStudie.Application.Services
@@ -17,9 +19,27 @@ namespace IdentityStudie.Application.Services
             _mediator = mediator;
         }
 
-        public Task<QuestionSolicitationDTO> GetSolicitationById(int solicitationId)
+        public async Task<QuestionSolicitationDTO> GetSolicitationById(int solicitationId)
         {
-            throw new NotImplementedException();
+            var solicitationByIdQuery = new GetSolicitationByIdQuery(solicitationId);
+            if (solicitationByIdQuery == null)
+                throw new Exception($"Entity could not be loaded.");
+
+            var result = await _mediator.Send(solicitationByIdQuery);
+
+            return _mapper.Map<QuestionSolicitationDTO>(result);
+        }
+
+        public async Task<IEnumerable<QuestionSolicitationDTO>> GetSolicitationByProfessorId(int professorId)
+        {
+            var solicitationsByProfessorIdQuery = new GetSolicitationByProfessorIdQuery(professorId);
+
+            if (solicitationsByProfessorIdQuery == null)
+                throw new Exception($"Entity could not be loaded.");
+
+            var result = await _mediator.Send(solicitationsByProfessorIdQuery);
+
+            return _mapper.Map<IEnumerable<QuestionSolicitationDTO>>(result);
         }
 
         public async Task<IEnumerable<QuestionSolicitationDTO>> GetSolicitationsByCategoryId(int categoryId)
@@ -32,6 +52,11 @@ namespace IdentityStudie.Application.Services
             var result = await _mediator.Send(solicitationsByCategoryIdQuery);
 
             return _mapper.Map<IEnumerable<QuestionSolicitationDTO>>(result);
+        }
+
+        public Task Update(QuestionSolicitationDTO questionSolicictationDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }
