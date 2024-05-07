@@ -5,11 +5,11 @@ namespace IdentityStudie.Domain.Entities;
 
 public sealed class QuestionSolicitation : BaseEntity
 {
-    public string Description { get; set; }
-    public int TotalQuestionsRequest { get;  set; }
-    public int CategoryId { get; set; }
-    public int ProfessorId { get; set; }
-    public StatusEnum Status { get; set; } = StatusEnum.Active;
+    public string Description { get; private set; }
+    public int TotalQuestionsRequest { get;  private set; }
+    public int CategoryId { get; private set; }
+    public int ProfessorId { get; private set; }
+    public StatusEnum Status { get; private set; } = StatusEnum.Active;
     public Category Category { get; set; }
     public ICollection<Question>? QuestionList { get; set; }
 
@@ -34,6 +34,12 @@ public sealed class QuestionSolicitation : BaseEntity
     public void Update(string description, int totalQuestions, int categoryId, int professorId, StatusEnum status)
     {
         ValidateDomain(description, totalQuestions, categoryId, professorId, status);
+    }
+
+    public void UpdateAnswer(StatusEnum status)
+    {
+        DomainExceptionValidation.When(status < 0, "Invalid Status value.");
+        Status = status;
     }
 
     private void ValidateDomain(string description, int totalQuestions, int categoryId, int professorId, StatusEnum status)
