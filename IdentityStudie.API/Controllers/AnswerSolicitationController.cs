@@ -1,12 +1,14 @@
 ﻿using IdentityStudie.Application.AnswerSolicitation.Commands;
 using IdentityStudie.Application.DTOs;
 using IdentityStudie.Application.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityStudie.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAnyOrigin")]
     public class AnswerSolicitationController : ControllerBase
     {
         private readonly IAnswerSolicitationService _answerSolicitationService;

@@ -1,5 +1,6 @@
 ﻿using IdentityStudie.Application.DTOs;
 using IdentityStudie.Application.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityStudie.API.Controllers
@@ -11,6 +12,7 @@ namespace IdentityStudie.API.Controllers
      */
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAnyOrigin")]
     public class QuestionSolicitationController : ControllerBase
     {
         private readonly ISolicitationService _questionSolicitationService;
