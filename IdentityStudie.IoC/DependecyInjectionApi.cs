@@ -29,6 +29,18 @@ namespace IdentityStudie.IoC
             var handlers = AppDomain.CurrentDomain.Load("IdentityStudie.Application");
             services.AddMediatR(config => config.RegisterServicesFromAssemblies(handlers));
 
+            //Configuração do CORS
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
+
             return services;
         }
 
