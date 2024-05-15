@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using IdentityStudie.Domain.Enums;
+using MediatR;
 
 namespace IdentityStudie.Application.QuestionSolicitation.Commands
 {
@@ -7,5 +8,7 @@ namespace IdentityStudie.Application.QuestionSolicitation.Commands
         public string Description { get; set; }
         public int TotalQuestionsRequest { get; set; }
         public int CategoryId { get; set; }
+        public int ProfessorId { get; set; }
+        public StatusEnum Status { get; set; }
     }
 }

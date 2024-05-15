@@ -11,7 +11,7 @@ namespace IdentityStudie.Application.DTOs
         public int? Id { get; set; }
 
         [Required(ErrorMessage = "The Description is Required")]
-        [DisplayName("The Description is Required")]
+        [DisplayName("Description")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "The TotalQuestionsRequest is Required")]
@@ -22,6 +22,14 @@ namespace IdentityStudie.Application.DTOs
         [Required(ErrorMessage = "The Category Id is Required")]
         [DisplayName("Category")]
         public int CategoryId { get; set; }
+
+        [Required(ErrorMessage = "The Professor Id is Required")]
+        [DisplayName("ProfessorId")]
+        public int ProfessorId { get; set; }
+
+        [Required(ErrorMessage ="The Status is Required")]
+        [DisplayName("Status")]
+        public StatusEnum Status { get; set; }
 
         //Tirar o json ignora quando ja estiver com o retorno de category e questions ok
         [JsonIgnore]

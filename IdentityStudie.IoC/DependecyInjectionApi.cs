@@ -21,11 +21,25 @@ namespace IdentityStudie.IoC
 
             services.AddScoped<ISolicitationRepository, SolicitationRepository>();
             services.AddScoped<ISolicitationService, QuestionSolicitationService>();
+            services.AddScoped<IAnswerSolicitationRepository, AnswerSolicitationRepository>();
+            services.AddScoped<IAnswerSolicitationService, AnswerSolicitationService>();
 
             services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
 
             var handlers = AppDomain.CurrentDomain.Load("IdentityStudie.Application");
             services.AddMediatR(config => config.RegisterServicesFromAssemblies(handlers));
+
+            //Configuração do CORS
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
 
             return services;
         }

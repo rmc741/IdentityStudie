@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using IdentityStudie.Application.AnswerSolicitation.Commands;
 using IdentityStudie.Application.DTOs;
 using IdentityStudie.Application.QuestionSolicitation.Commands;
 
@@ -10,6 +11,8 @@ namespace IdentityStudie.Application.Mappings
         {
             CreateMap<QuestionSolicitationDTO, SolicitationCreateCommand>();
             CreateMap<QuestionSolicitationDTO, SolicitationUpdateCommand>();
+
+            CreateMap<AnswerSolicitationDTO, AnswerSolicitationUpdateCommand>();
         }
     }
 }

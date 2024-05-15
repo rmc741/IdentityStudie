@@ -1,11 +1,18 @@
 ﻿using IdentityStudie.Application.DTOs;
 using IdentityStudie.Application.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityStudie.API.Controllers
 {
+    /*
+     * TO-DO
+     * Somente ADM ou User padrão poderá ver/criar/editar/remover solicitações
+     * Solicitações precisam informar id de categoria e prof daquela categoria especifica
+     */
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAnyOrigin")]
     public class QuestionSolicitationController : ControllerBase
     {
         private readonly ISolicitationService _questionSolicitationService;
@@ -27,7 +34,7 @@ namespace IdentityStudie.API.Controllers
             return Ok(questionSolicitationList);
         }
 
-        [HttpGet("{id}", Name = "GetSolicitation")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<QuestionSolicitationDTO>> Get(int id)
         {
             var solicitation = await _questionSolicitationService.GetById(id);
@@ -70,9 +77,9 @@ namespace IdentityStudie.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<QuestionSolicitationDTO>> Delete(int id)
         {
-            var produtoDto = await _questionSolicitationService.GetById(id);
+            var solicitationDto = await _questionSolicitationService.GetById(id);
 
-            if (produtoDto == null)
+            if (solicitationDto == null)
             {
                 return NotFound("Product not found");
             }

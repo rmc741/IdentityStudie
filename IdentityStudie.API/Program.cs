@@ -18,6 +18,8 @@ namespace IdentityStudie
 
             var app = builder.Build();
 
+            app.UseCors();
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -28,7 +30,6 @@ namespace IdentityStudie
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllerRoute(
                 name: "default",
